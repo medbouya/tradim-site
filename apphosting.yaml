@@ -1,0 +1,23 @@
+runConfig:
+  cpu: 1
+  memoryMiB: 512
+  minInstances: 0
+  maxInstances: 5
+env:
+  - variable: NEXT_PUBLIC_SITE_URL
+    value: https://tradim.mr
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: CMS_PROVIDER
+    value: mock
+    availability:
+      - RUNTIME
+  - variable: PAYLOAD_API_URL
+    secret: PAYLOAD_API_URL
+  - variable: PAYLOAD_API_TOKEN
+    secret: PAYLOAD_API_TOKEN
+  - variable: FORM_RECEIVER_EMAIL
+    value: contact@tradim.mr
+    availability:
+      - RUNTIME
