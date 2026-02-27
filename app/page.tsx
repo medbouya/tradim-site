@@ -75,7 +75,7 @@ export default async function HomePage() {
       {/* BYD partner strip */}
       <section className="border-b border-slate-200 bg-slate-900 py-4">
         <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center gap-3 px-4 sm:px-6">
-          <span className="rounded bg-partner px-2 py-0.5 text-xs font-bold uppercase tracking-widest text-white">
+          <span className="rounded bg-accent px-2 py-0.5 text-xs font-bold uppercase tracking-widest text-white">
             BYD
           </span>
           <p className="text-sm text-slate-300">
@@ -96,7 +96,7 @@ export default async function HomePage() {
               key={item.title}
               className="flex gap-4 rounded-xl border border-slate-200 bg-white p-6"
             >
-              <span className="mt-0.5 shrink-0 rounded-lg bg-accent/10 p-2.5 text-accent">
+              <span className="mt-0.5 shrink-0 rounded-lg bg-red-50 p-2.5 text-accent">
                 <item.icon className="h-5 w-5" />
               </span>
               <div>

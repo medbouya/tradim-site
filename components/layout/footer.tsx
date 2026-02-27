@@ -17,7 +17,7 @@ export function Footer() {
             Solutions solaires pour les entreprises et les foyers exigeants.
           </p>
           <div className="mt-5 flex items-center gap-2">
-            <span className="rounded bg-partner px-1.5 py-0.5 text-xs font-bold uppercase tracking-widest text-white">
+            <span className="rounded bg-accent px-1.5 py-0.5 text-xs font-bold uppercase tracking-widest text-white">
               BYD
             </span>
             <span className="text-xs text-slate-400">Distributeur officiel</span>

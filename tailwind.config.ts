@@ -14,7 +14,6 @@ const config: Config = {
         muted: "var(--muted)",
         accent: "var(--accent)",
         energy: "var(--energy)",
-        partner: "var(--partner)",
       },
       boxShadow: {
         card: "0 20px 45px -30px rgba(31, 41, 55, 0.55)",
