@@ -1,6 +1,16 @@
 {
-  "apphosting": {
-    "backendId": "tradim-web",
-    "rootDir": "."
-  }
+  "apphosting": [
+    {
+      "backendId": "tradim-site",
+      "rootDir": ".",
+      "ignore": [
+        "node_modules",
+        ".git",
+        ".next",
+        "tradim-app",
+        "test-results",
+        "firebase-debug.log"
+      ]
+    }
+  ]
 }
