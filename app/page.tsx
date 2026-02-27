@@ -4,8 +4,31 @@ import { ProductCard } from "@/components/sections/product-card";
 import { TestimonialList } from "@/components/sections/testimonial-list";
 import { LinkButton } from "@/components/ui/button";
 import { dataProvider } from "@/lib/data";
+import {
+  ShieldCheckIcon,
+  WrenchScrewdriverIcon,
+  PhoneIcon,
+} from "@heroicons/react/24/solid";
 
 export const revalidate = 300;
+
+const trustItems = [
+  {
+    icon: WrenchScrewdriverIcon,
+    title: "Crédibilité terrain",
+    description: "Déploiements maîtrisés dans des environnements industriels exigeants.",
+  },
+  {
+    icon: ShieldCheckIcon,
+    title: "Garantie 6 ans",
+    description: "Produits sélectionnés pour leur fiabilité thermique et électrique.",
+  },
+  {
+    icon: PhoneIcon,
+    title: "Support technique",
+    description: "Assistance avant-vente, mise en service et maintenance proactive.",
+  },
+];
 
 export default async function HomePage() {
   const [products, projects, testimonials] = await Promise.all([
@@ -18,6 +41,7 @@ export default async function HomePage() {
 
   return (
     <>
+      {/* Hero */}
       <section className="relative overflow-hidden border-b border-slate-200 bg-slate-900 py-24 text-white">
         <div className="absolute inset-0">
           <Image
@@ -48,40 +72,60 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6">
-        <div className="grid gap-6 md:grid-cols-3">
-          <article className="rounded-xl border border-slate-200 bg-white p-6">
-            <h2 className="font-heading text-xl font-semibold text-ink">Crédibilité terrain</h2>
-            <p className="mt-2 text-sm text-muted">
-              Déploiements maîtrisés dans des environnements industriels exigeants.
-            </p>
-          </article>
-          <article className="rounded-xl border border-slate-200 bg-white p-6">
-            <h2 className="font-heading text-xl font-semibold text-ink">Garantie 6 ans</h2>
-            <p className="mt-2 text-sm text-muted">
-              Produits sélectionnés pour leur fiabilité thermique et électrique.
-            </p>
-          </article>
-          <article className="rounded-xl border border-slate-200 bg-white p-6">
-            <h2 className="font-heading text-xl font-semibold text-ink">Support technique</h2>
-            <p className="mt-2 text-sm text-muted">
-              Assistance avant-vente, mise en service et maintenance proactive.
-            </p>
-          </article>
+      {/* BYD partner strip */}
+      <section className="border-b border-slate-200 bg-slate-900 py-4">
+        <div className="mx-auto flex w-full max-w-6xl flex-wrap items-center gap-3 px-4 sm:px-6">
+          <span className="rounded bg-partner px-2 py-0.5 text-xs font-bold uppercase tracking-widest text-white">
+            BYD
+          </span>
+          <p className="text-sm text-slate-300">
+            Distributeur officiel{" "}
+            <span className="font-semibold text-white">BYD Energy Storage</span> en Mauritanie
+          </p>
+          <span className="hidden text-xs text-slate-500 sm:ml-auto sm:block">
+            Battery-Box HVS · Battery-Box LVS · BE5
+          </span>
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-6xl px-4 py-8 sm:px-6">
-        <div className="mb-6 flex items-center justify-between">
-          <h2 className="font-heading text-3xl font-semibold text-ink">Produits mis en avant</h2>
-        </div>
+      {/* Trust badges */}
+      <section className="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6">
         <div className="grid gap-6 md:grid-cols-3">
-          {featuredProducts.map((product) => (
-            <ProductCard key={product.slug} product={product} />
+          {trustItems.map((item) => (
+            <article
+              key={item.title}
+              className="flex gap-4 rounded-xl border border-slate-200 bg-white p-6"
+            >
+              <span className="mt-0.5 shrink-0 rounded-lg bg-accent/10 p-2.5 text-accent">
+                <item.icon className="h-5 w-5" />
+              </span>
+              <div>
+                <h2 className="font-heading text-lg font-semibold text-ink">{item.title}</h2>
+                <p className="mt-1.5 text-sm text-muted">{item.description}</p>
+              </div>
+            </article>
           ))}
         </div>
       </section>
 
+      {/* Featured products */}
+      <section className="bg-slate-50 py-16">
+        <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
+          <div className="mb-6 flex items-center justify-between">
+            <h2 className="font-heading text-3xl font-semibold text-ink">Produits mis en avant</h2>
+            <LinkButton href="/products" intent="secondary" className="hidden sm:inline-flex">
+              Voir tout le catalogue
+            </LinkButton>
+          </div>
+          <div className="grid gap-6 md:grid-cols-3">
+            {featuredProducts.map((product) => (
+              <ProductCard key={product.slug} product={product} />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Projects */}
       <section className="mx-auto w-full max-w-6xl px-4 py-16 sm:px-6">
         <h2 className="mb-6 font-heading text-3xl font-semibold text-ink">Réalisations</h2>
         <div className="grid gap-6 md:grid-cols-2">
@@ -91,9 +135,12 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="mx-auto w-full max-w-6xl px-4 pb-16 sm:px-6">
-        <h2 className="mb-6 font-heading text-3xl font-semibold text-ink">Témoignages</h2>
-        <TestimonialList testimonials={testimonials} />
+      {/* Testimonials */}
+      <section className="bg-slate-50 py-16">
+        <div className="mx-auto w-full max-w-6xl px-4 sm:px-6">
+          <h2 className="mb-6 font-heading text-3xl font-semibold text-ink">Témoignages</h2>
+          <TestimonialList testimonials={testimonials} />
+        </div>
       </section>
     </>
   );

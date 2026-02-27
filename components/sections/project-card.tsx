@@ -7,7 +7,7 @@ type ProjectCardProps = {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <article className="overflow-hidden rounded-xl border border-slate-200 bg-white">
+    <article className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-card transition-shadow hover:shadow-[0_24px_50px_-28px_rgba(31,41,55,0.7)]">
       <div className="relative h-48">
         <Image
           src={project.images[0]}

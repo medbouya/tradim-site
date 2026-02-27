@@ -8,7 +8,7 @@ type ProductCardProps = {
 
 export function ProductCard({ product }: ProductCardProps) {
   return (
-    <article className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-card">
+    <article className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-card transition-shadow hover:shadow-[0_24px_50px_-28px_rgba(31,41,55,0.7)]">
       <div className="relative h-52">
         <Image
           src={product.images[0]}

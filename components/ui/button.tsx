@@ -8,7 +8,7 @@ const buttonVariants = cva(
   {
     variants: {
       intent: {
-        primary: "bg-accent text-white hover:bg-red-700 focus-visible:ring-accent",
+        primary: "bg-accent text-white hover:bg-orange-700 focus-visible:ring-accent",
         secondary:
           "border border-ink/20 bg-white text-ink hover:bg-slate-100 focus-visible:ring-ink",
       },
