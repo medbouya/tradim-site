@@ -10,13 +10,15 @@ env:
       - BUILD
       - RUNTIME
   - variable: CMS_PROVIDER
-    value: mock
+    value: payload
     availability:
+      - BUILD
       - RUNTIME
   - variable: PAYLOAD_API_URL
-    secret: PAYLOAD_API_URL
-  - variable: PAYLOAD_API_TOKEN
-    secret: PAYLOAD_API_TOKEN
+    value: https://tradim-cms-production.up.railway.app
+    availability:
+      - BUILD
+      - RUNTIME
   - variable: FORM_RECEIVER_EMAIL
     value: contact@tradim.mr
     availability:

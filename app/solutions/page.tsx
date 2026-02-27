@@ -33,13 +33,18 @@ export default async function SolutionsPage() {
     <>
       <PageHero
         title="Des solutions dimensionnées pour vos contraintes réelles."
-        description={
-          page?.content ??
-          "Nous concevons des solutions photovoltaïques adaptées au profil de charge de chaque client."
-        }
+        description="Nous concevons des solutions photovoltaïques adaptées au profil de charge de chaque client."
         ctaLabel="Parler à un expert"
         ctaHref="/contact"
       />
+      {page?.content && (
+        <section className="mx-auto w-full max-w-5xl px-4 pt-14 sm:px-6">
+          <div
+            className="prose prose-slate max-w-none"
+            dangerouslySetInnerHTML={{ __html: page.content }}
+          />
+        </section>
+      )}
       <section className="mx-auto grid w-full max-w-6xl gap-6 px-4 py-14 sm:px-6 md:grid-cols-3">
         {solutionCards.map((item) => (
           <article key={item.title} className="rounded-xl border border-slate-200 bg-white p-6">
