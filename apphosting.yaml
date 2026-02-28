@@ -28,11 +28,3 @@ env:
     availability:
       - BUILD
       - RUNTIME
-  - variable: SANITY_API_TOKEN
-    secret: SANITY_API_TOKEN
-    availability:
-      - RUNTIME
-  - variable: SANITY_REVALIDATE_SECRET
-    secret: SANITY_REVALIDATE_SECRET
-    availability:
-      - RUNTIME
