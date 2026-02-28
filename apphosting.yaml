@@ -9,16 +9,6 @@ env:
     availability:
       - BUILD
       - RUNTIME
-  - variable: CMS_PROVIDER
-    value: payload
-    availability:
-      - BUILD
-      - RUNTIME
-  - variable: PAYLOAD_API_URL
-    value: https://tradim-cms-production.up.railway.app
-    availability:
-      - BUILD
-      - RUNTIME
   - variable: FORM_RECEIVER_EMAIL
     value: contact@tradim.mr
     availability:

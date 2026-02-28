@@ -1,9 +1,8 @@
 import type { MetadataRoute } from "next";
 import { siteConfig } from "@/lib/config";
-import { dataProvider } from "@/lib/data";
+import { products } from "@/lib/content/products";
 
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const products = await dataProvider.getProducts();
+export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes = [
     "",
     "/about",
@@ -14,7 +13,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     "/request-quote",
   ];
 
-  const productRoutes = products.map((product) => `/products/${product.slug}`);
+  const productRoutes = products.map((p) => `/products/${p.slug}`);
   const routes = [...staticRoutes, ...productRoutes];
 
   return routes.map((path) => ({

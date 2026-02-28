@@ -10,13 +10,15 @@ const config: Config = {
     extend: {
       colors: {
         surface: "var(--surface)",
+        dark: "var(--surface-dark)",
         ink: "var(--ink)",
         muted: "var(--muted)",
         accent: "var(--accent)",
         energy: "var(--energy)",
       },
       boxShadow: {
-        card: "0 20px 45px -30px rgba(31, 41, 55, 0.55)",
+        card: "0 20px 45px -30px rgba(0,0,0,0.4)",
+        "card-dark": "0 20px 45px -20px rgba(0,0,0,0.8)",
       },
       fontFamily: {
         heading: ["var(--font-poppins)"],

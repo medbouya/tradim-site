@@ -1,51 +1,70 @@
 import Link from "next/link";
+import { settings } from "@/lib/content/settings";
 
 const links = [
   { href: "/about", label: "Entreprise" },
   { href: "/products", label: "Catalogue" },
+  { href: "/solutions", label: "Solutions" },
   { href: "/projects", label: "Références" },
   { href: "/contact", label: "Support" },
 ];
 
 export function Footer() {
   return (
-    <footer className="border-t border-slate-200 bg-slate-900 text-slate-300">
-      <div className="mx-auto grid w-full max-w-6xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-3">
+    <footer className="bg-[#0d0d0d] text-slate-400">
+      <div className="mx-auto grid w-full max-w-7xl gap-10 px-4 py-14 sm:px-6 md:grid-cols-3">
         <div>
-          <p className="font-heading text-lg font-semibold text-white">TRADIM.MR</p>
-          <p className="mt-3 max-w-xs text-sm">
-            Solutions solaires pour les entreprises et les foyers exigeants.
-          </p>
-          <div className="mt-5 flex items-center gap-2">
-            <span className="rounded bg-accent px-1.5 py-0.5 text-xs font-bold uppercase tracking-widest text-white">
-              BYD
-            </span>
-            <span className="text-xs text-slate-400">Distributeur officiel</span>
+          <div className="flex items-center gap-2.5 font-heading text-sm font-bold tracking-[0.2em] text-white uppercase">
+            <span className="h-2 w-2 rounded-full bg-accent" />
+            TRADIM
+          </div>
+          <p className="mt-4 max-w-xs text-sm leading-relaxed">{settings.tagline}</p>
+          <div className="mt-5 inline-flex items-center gap-2 rounded-sm border border-white/10 px-3 py-1.5">
+            <span className="h-1.5 w-1.5 rounded-full bg-accent" />
+            <span className="text-xs font-semibold uppercase tracking-widest text-white">BYD</span>
+            <span className="text-xs text-slate-600">Distributeur officiel</span>
           </div>
         </div>
+
         <div>
-          <p className="text-sm font-semibold uppercase tracking-wide text-white">Navigation</p>
-          <ul className="mt-3 space-y-2 text-sm">
+          <p className="text-xs font-semibold uppercase tracking-[0.15em] text-white">Navigation</p>
+          <ul className="mt-4 space-y-2.5 text-sm">
             {links.map((link) => (
               <li key={link.href}>
-                <Link className="hover:text-accent" href={link.href}>
+                <Link className="transition-colors hover:text-white" href={link.href}>
                   {link.label}
                 </Link>
               </li>
             ))}
           </ul>
         </div>
+
         <div>
-          <p className="text-sm font-semibold uppercase tracking-wide text-white">Coordonnées</p>
-          <ul className="mt-3 space-y-2 text-sm">
-            <li>contact@tradim.mr</li>
-            <li>+222 45 12 34 56</li>
-            <li>Tevragh-Zeina, Nouakchott</li>
+          <p className="text-xs font-semibold uppercase tracking-[0.15em] text-white">Coordonnées</p>
+          <ul className="mt-4 space-y-2.5 text-sm">
+            <li>
+              <a
+                href={`mailto:${settings.contact.email}`}
+                className="transition-colors hover:text-white"
+              >
+                {settings.contact.email}
+              </a>
+            </li>
+            <li>
+              <a
+                href={`tel:${settings.contact.phone.replace(/\s/g, "")}`}
+                className="transition-colors hover:text-white"
+              >
+                {settings.contact.phone}
+              </a>
+            </li>
+            <li>{settings.contact.address}</li>
           </ul>
         </div>
       </div>
-      <div className="border-t border-slate-800">
-        <p className="mx-auto w-full max-w-6xl px-4 py-4 text-xs text-slate-500 sm:px-6">
+
+      <div className="border-t border-white/5">
+        <p className="mx-auto w-full max-w-7xl px-4 py-4 text-xs text-slate-600 sm:px-6">
           © {new Date().getFullYear()} TRADIM.MR — Tous droits réservés
         </p>
       </div>

@@ -8,8 +8,5 @@ export const siteConfig = {
 };
 
 export const runtimeConfig = {
-  cmsProvider: process.env.CMS_PROVIDER ?? "mock",
-  payloadApiUrl: process.env.PAYLOAD_API_URL,
-  payloadApiToken: process.env.PAYLOAD_API_TOKEN,
   formReceiverEmail: process.env.FORM_RECEIVER_EMAIL,
 };

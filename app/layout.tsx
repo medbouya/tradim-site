@@ -20,13 +20,13 @@ const manrope = Manrope({
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.siteUrl),
-  title: "TRADIM.MR - Solutions Solaires Fiables",
+  title: "TRADIM.MR — Distributeur BYD Energy Storage en Mauritanie",
   description:
-    "TRADIM fournit des produits et solutions solaires performants pour entreprises et particuliers.",
+    "Systèmes de stockage BYD Power-Box SL 6K et SL 10K. Solutions fiables pour entreprises et infrastructures critiques.",
   openGraph: {
-    title: "TRADIM.MR - Solutions Solaires Fiables",
+    title: "TRADIM.MR — Distributeur BYD Energy Storage en Mauritanie",
     description:
-      "Produits photovoltaïques, stockage et projets sur mesure pour sites résidentiels et industriels.",
+      "Systèmes de stockage BYD Power-Box SL. Distributeur officiel BYD en Mauritanie.",
     url: siteConfig.siteUrl,
     siteName: siteConfig.name,
     locale: siteConfig.locale,
@@ -42,9 +42,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "TRADIM.MR - Solutions Solaires Fiables",
+    title: "TRADIM.MR — Distributeur BYD Energy Storage en Mauritanie",
     description:
-      "Produits photovoltaïques, stockage et projets sur mesure pour sites résidentiels et industriels.",
+      "Systèmes de stockage BYD Power-Box SL. Distributeur officiel BYD en Mauritanie.",
     images: [siteConfig.defaultOgImage],
   },
 };

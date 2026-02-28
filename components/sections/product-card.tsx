@@ -1,34 +1,41 @@
-import Image from "next/image";
 import Link from "next/link";
-import type { Product } from "@/lib/types";
+import type { Product } from "@/lib/content/products";
 
 type ProductCardProps = {
   product: Product;
 };
 
 export function ProductCard({ product }: ProductCardProps) {
+  const topSpecs = Object.entries(product.technicalSpecifications).slice(0, 4);
+
   return (
-    <article className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-card transition-shadow hover:shadow-[0_24px_50px_-28px_rgba(31,41,55,0.7)]">
-      <div className="relative h-52">
-        <Image
-          src={product.images[0]}
-          alt={product.name}
-          fill
-          sizes="(max-width: 768px) 100vw, 33vw"
-          className="object-cover"
-        />
-      </div>
-      <div className="p-5">
-        <p className="text-xs font-semibold uppercase tracking-wider text-accent">
+    <article className="flex flex-col rounded-sm border border-white/10 bg-[#111] transition-colors hover:border-white/20">
+      <div className="border-b border-white/5 p-6">
+        <p className="text-xs font-semibold uppercase tracking-[0.15em] text-accent">
           {product.category}
         </p>
-        <h3 className="mt-2 font-heading text-xl font-semibold text-ink">{product.name}</h3>
-        <p className="mt-3 line-clamp-3 text-sm text-muted">{product.description}</p>
+        <h3 className="mt-2 font-heading text-xl font-bold text-white">{product.name}</h3>
+        <p className="mt-1.5 text-sm text-slate-400">{product.tagline}</p>
+      </div>
+
+      <div className="flex-1 p-6">
+        <dl className="space-y-2.5">
+          {topSpecs.map(([label, value]) => (
+            <div key={label} className="flex items-baseline justify-between gap-4">
+              <dt className="text-xs text-slate-500">{label}</dt>
+              <dd className="text-xs font-semibold text-white tabular-nums">{value}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+
+      <div className="border-t border-white/5 p-6">
         <Link
           href={`/products/${product.slug}`}
-          className="mt-5 inline-flex text-sm font-semibold text-ink hover:text-accent"
+          className="inline-flex items-center gap-2 text-sm font-semibold text-white transition-colors hover:text-accent"
         >
           Voir la fiche produit
+          <span aria-hidden>→</span>
         </Link>
       </div>
     </article>

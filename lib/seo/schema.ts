@@ -1,4 +1,4 @@
-import type { Product } from "@/lib/types";
+import type { Product } from "@/lib/content/products";
 
 export function organizationSchema() {
   return {

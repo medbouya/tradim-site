@@ -1,5 +1,4 @@
-import Image from "next/image";
-import type { Project } from "@/lib/types";
+import type { Project } from "@/lib/content/projects";
 
 type ProjectCardProps = {
   project: Project;
@@ -7,20 +6,15 @@ type ProjectCardProps = {
 
 export function ProjectCard({ project }: ProjectCardProps) {
   return (
-    <article className="overflow-hidden rounded-xl border border-slate-200 bg-white shadow-card transition-shadow hover:shadow-[0_24px_50px_-28px_rgba(31,41,55,0.7)]">
-      <div className="relative h-48">
-        <Image
-          src={project.images[0]}
-          alt={project.title}
-          fill
-          sizes="(max-width: 768px) 100vw, 50vw"
-          className="object-cover"
-        />
-      </div>
-      <div className="p-5">
-        <p className="text-xs uppercase tracking-wider text-energy">{project.location}</p>
-        <h3 className="mt-2 font-heading text-xl font-semibold text-ink">{project.title}</h3>
-        <p className="mt-2 text-sm text-muted">{project.description}</p>
+    <article className="rounded-sm border border-slate-200 bg-white p-6">
+      <p className="text-xs font-semibold uppercase tracking-[0.15em] text-accent">
+        {project.location}
+      </p>
+      <h3 className="mt-2 font-heading text-xl font-bold text-ink">{project.title}</h3>
+      <p className="mt-3 text-sm leading-relaxed text-muted">{project.description}</p>
+      <div className="mt-4 flex items-center gap-2 border-t border-slate-100 pt-4">
+        <span className="font-heading text-base font-bold text-ink">{project.capacity}</span>
+        <span className="text-xs text-muted">de capacité installée</span>
       </div>
     </article>
   );
