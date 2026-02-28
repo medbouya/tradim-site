@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { ProductCard } from "@/components/sections/product-card";
 import { PageHero } from "@/components/sections/page-hero";
-import { products } from "@/lib/content/products";
+import { products as staticProducts } from "@/lib/content/products";
+import { getProducts } from "@/lib/sanity/queries";
+
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "Produits - TRADIM.MR",
@@ -9,7 +12,10 @@ export const metadata: Metadata = {
   alternates: { canonical: "/products" },
 };
 
-export default function ProductsPage() {
+export default async function ProductsPage() {
+  const sanityProducts = await getProducts();
+  const products = sanityProducts.length > 0 ? sanityProducts : staticProducts;
+
   return (
     <>
       <PageHero

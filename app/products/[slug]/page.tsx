@@ -2,17 +2,22 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { LinkButton } from "@/components/ui/button";
 import { siteConfig } from "@/lib/config";
-import { products, getProductBySlug } from "@/lib/content/products";
+import { products as staticProducts, getProductBySlug as getStaticBySlug } from "@/lib/content/products";
+import { getProductBySlug, getProductSlugs } from "@/lib/sanity/queries";
 import { breadcrumbSchema, productSchema } from "@/lib/seo/schema";
+
+export const revalidate = 3600;
 
 type Props = { params: { slug: string } };
 
-export function generateStaticParams() {
-  return products.map((p) => ({ slug: p.slug }));
+export async function generateStaticParams() {
+  const sanitySligs = await getProductSlugs();
+  const slugs = sanitySligs.length > 0 ? sanitySligs : staticProducts.map((p) => p.slug);
+  return slugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const product = getProductBySlug(params.slug);
+  const product = (await getProductBySlug(params.slug)) ?? getStaticBySlug(params.slug);
   if (!product) return { title: "Produit non trouvé - TRADIM.MR" };
   return {
     title: `${product.name} - TRADIM.MR`,
@@ -28,8 +33,8 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
-export default function ProductDetailPage({ params }: Props) {
-  const product = getProductBySlug(params.slug);
+export default async function ProductDetailPage({ params }: Props) {
+  const product = (await getProductBySlug(params.slug)) ?? getStaticBySlug(params.slug);
   if (!product) notFound();
 
   const breadcrumbs = breadcrumbSchema([

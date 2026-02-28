@@ -13,3 +13,26 @@ env:
     value: contact@tradim.mr
     availability:
       - RUNTIME
+  - variable: NEXT_PUBLIC_SANITY_PROJECT_ID
+    value: o5014ckj
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: NEXT_PUBLIC_SANITY_DATASET
+    value: production
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: NEXT_PUBLIC_SANITY_API_VERSION
+    value: "2024-01-01"
+    availability:
+      - BUILD
+      - RUNTIME
+  - variable: SANITY_API_TOKEN
+    secret: SANITY_API_TOKEN
+    availability:
+      - RUNTIME
+  - variable: SANITY_REVALIDATE_SECRET
+    secret: SANITY_REVALIDATE_SECRET
+    availability:
+      - RUNTIME

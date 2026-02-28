@@ -1,0 +1,33 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git add Dockerfile docker-compose.yml next.config.mjs src/migrations/20260227_initial.ts src/payload.config.ts)",
+      "Bash(git commit:*)",
+      "Bash(git push origin master)",
+      "Bash(git add .env.example src/migrations/20260227_initial.ts src/migrations/20260228_add_user_sessions.ts src/payload.config.ts)",
+      "Bash(git add src/migrations/20260227_initial.ts src/migrations/20260228_add_user_sessions.ts src/migrations/20260229_fix_sessions_id.ts)",
+      "Bash(git add src/migrations/20260227_initial.ts src/migrations/20260230_add_locked_documents.ts)",
+      "Bash(git add src/migrations/20260231_fix_column_names.ts src/migrations/20260227_initial.ts)",
+      "Bash(git add lib/utils/lexical-to-html.ts lib/data/adapters/payload.ts app/about/page.tsx app/solutions/page.tsx apphosting.yaml)",
+      "Bash(git add src/migrations/20260232_fix_settings_columns.ts src/migrations/20260227_initial.ts)",
+      "Bash(npm install -D @tailwindcss/typography)",
+      "Bash(git add app/globals.css tailwind.config.ts components/ui/button.tsx components/layout/header.tsx components/layout/footer.tsx app/page.tsx components/sections/product-card.tsx components/sections/project-card.tsx package.json package-lock.json)",
+      "Bash(git add Dockerfile)",
+      "Bash(firebase apphosting:rollouts:create tradim-site --git-branch master --project tradim-mr)",
+      "Bash(firebase deploy --project tradim-mr)",
+      "Bash(git add app/globals.css tailwind.config.ts components/ui/button.tsx app/page.tsx components/layout/footer.tsx)",
+      "WebFetch(domain:www.bydenergy.com)",
+      "Bash(ls -la /c/Users/medbo/NextJSProjects/tradim-site/.env*)",
+      "Bash(git -C tradim-app rev-parse --is-inside-work-tree)",
+      "WebFetch(domain:bydenergy.com)",
+      "Bash(\"c:\\\\Users\\\\medbo\\\\NextJSProjects\\\\tradim-site\\\\apphosting.yaml\":*)",
+      "Bash(python3 -c \":*)",
+      "Bash(npm run build)",
+      "Bash(git add app/ components/ lib/ next.config.mjs tailwind.config.ts tsconfig.json apphosting.yaml)",
+      "Bash(git push)",
+      "WebFetch(domain:www.sanity.io)",
+      "WebFetch(domain:keystatic.com)",
+      "WebFetch(domain:www.contentful.com)"
+    ]
+  }
+}

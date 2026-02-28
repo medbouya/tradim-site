@@ -2,11 +2,14 @@ import { LinkButton } from "@/components/ui/button";
 import { ProductCard } from "@/components/sections/product-card";
 import { ProjectCard } from "@/components/sections/project-card";
 import { TestimonialList } from "@/components/sections/testimonial-list";
-import { settings } from "@/lib/content/settings";
-import { products } from "@/lib/content/products";
-import { projects } from "@/lib/content/projects";
-import { testimonials } from "@/lib/content/testimonials";
+import { settings as staticSettings } from "@/lib/content/settings";
+import { products as staticProducts } from "@/lib/content/products";
+import { projects as staticProjects } from "@/lib/content/projects";
+import { testimonials as staticTestimonials } from "@/lib/content/testimonials";
+import { getProducts, getProjects, getTestimonials, getSettings } from "@/lib/sanity/queries";
 import { ShieldCheckIcon, WrenchScrewdriverIcon, BoltIcon } from "@heroicons/react/24/solid";
+
+export const revalidate = 3600;
 
 const trustItems = [
   { icon: WrenchScrewdriverIcon, title: "Expertise terrain", description: "Déploiements maîtrisés dans des environnements industriels exigeants de Mauritanie." },
@@ -21,7 +24,19 @@ const solutionItems = [
   { title: "Sites isolés", body: "Indépendance énergétique complète hors réseau." },
 ];
 
-export default function HomePage() {
+export default async function HomePage() {
+  const [sanityProducts, sanityProjects, sanityTestimonials, sanitySettings] = await Promise.all([
+    getProducts(),
+    getProjects(),
+    getTestimonials(),
+    getSettings(),
+  ]);
+
+  const settings = sanitySettings ?? staticSettings;
+  const products = sanityProducts.length > 0 ? sanityProducts : staticProducts;
+  const projects = sanityProjects.length > 0 ? sanityProjects : staticProjects;
+  const testimonials = sanityTestimonials.length > 0 ? sanityTestimonials : staticTestimonials;
+
   const featuredProducts = products.filter((p) => p.featured);
   const heroLines = settings.hero.title.split("\n");
 

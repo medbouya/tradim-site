@@ -1,17 +1,31 @@
 import { describe, expect, it } from "vitest";
-import { MockDataProvider } from "@/lib/data/adapters/mock";
+import { products, getProductBySlug } from "@/lib/content/products";
+import { projects } from "@/lib/content/projects";
+import { testimonials } from "@/lib/content/testimonials";
 
-describe("MockDataProvider", () => {
-  const provider = new MockDataProvider();
-
-  it("returns products filtered by category", async () => {
-    const products = await provider.getProducts({ category: "panneaux" });
+describe("Static content fallback", () => {
+  it("products list is non-empty and has required fields", () => {
     expect(products.length).toBeGreaterThan(0);
-    expect(products.every((item) => item.category === "panneaux")).toBe(true);
+    products.forEach((p) => {
+      expect(p.slug).toBeTruthy();
+      expect(p.name).toBeTruthy();
+    });
   });
 
-  it("returns null for unknown product slug", async () => {
-    const product = await provider.getProductBySlug("unknown");
-    expect(product).toBeNull();
+  it("getProductBySlug returns correct product", () => {
+    const first = products[0];
+    expect(getProductBySlug(first.slug)).toEqual(first);
+  });
+
+  it("returns undefined for unknown slug", () => {
+    expect(getProductBySlug("unknown-slug")).toBeUndefined();
+  });
+
+  it("projects list is non-empty", () => {
+    expect(projects.length).toBeGreaterThan(0);
+  });
+
+  it("testimonials list is non-empty", () => {
+    expect(testimonials.length).toBeGreaterThan(0);
   });
 });

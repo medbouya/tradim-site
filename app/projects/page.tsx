@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
 import { PageHero } from "@/components/sections/page-hero";
 import { ProjectCard } from "@/components/sections/project-card";
-import { projects } from "@/lib/content/projects";
+import { projects as staticProjects } from "@/lib/content/projects";
+import { getProjects } from "@/lib/sanity/queries";
+
+export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: "Réalisations - TRADIM.MR",
@@ -9,7 +12,10 @@ export const metadata: Metadata = {
   alternates: { canonical: "/projects" },
 };
 
-export default function ProjectsPage() {
+export default async function ProjectsPage() {
+  const sanityProjects = await getProjects();
+  const projects = sanityProjects.length > 0 ? sanityProjects : staticProjects;
+
   return (
     <>
       <PageHero
